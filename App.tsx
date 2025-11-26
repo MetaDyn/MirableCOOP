@@ -151,12 +151,14 @@ const App: React.FC = () => {
 
   // Show bottom nav on main app screens, but HIDE it during the immersive Game Map
   const showNav = [AppScreen.HOME, AppScreen.PRIZES, AppScreen.PROFILE].includes(screen);
+  const isFullScreen = screen === AppScreen.GAME_MAP;
 
   return (
     <Layout 
       activeNav={activeNav} 
       onNavClick={handleNavClick}
       showNav={showNav}
+      fullScreen={isFullScreen}
     >
       {renderScreen()}
     </Layout>

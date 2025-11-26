@@ -8,13 +8,15 @@ interface LayoutProps {
   activeNav?: NavigationItem;
   onNavClick?: (item: NavigationItem) => void;
   showNav?: boolean;
+  fullScreen?: boolean;
 }
 
 export const Layout: React.FC<LayoutProps> = ({ 
   children, 
   activeNav = 'HOME', 
   onNavClick, 
-  showNav = true 
+  showNav = true,
+  fullScreen = false
 }) => {
   
   const navItems: { id: NavigationItem; label: string; icon: React.ReactNode }[] = [
@@ -27,11 +29,16 @@ export const Layout: React.FC<LayoutProps> = ({
 
   return (
     <div className="min-h-screen bg-gray-50 flex justify-center">
-      {/* Mobile Container Limit */}
-      <div className="w-full max-w-md bg-white min-h-screen shadow-2xl relative flex flex-col">
+      {/* Container: Toggles between Mobile Constrained (max-w-md) and Full Screen */}
+      <div 
+        className={`
+            bg-white shadow-2xl relative flex flex-col transition-all duration-300
+            ${fullScreen ? 'w-full h-screen max-w-none' : 'w-full max-w-md min-h-screen'}
+        `}
+      >
         
         {/* Content Scroll Area */}
-        <main className="flex-1 overflow-y-auto no-scrollbar pb-24 relative">
+        <main className={`flex-1 relative flex flex-col ${fullScreen ? 'overflow-hidden p-0' : 'overflow-y-auto no-scrollbar pb-24'}`}>
           {children}
         </main>
 
