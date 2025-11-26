@@ -1,8 +1,9 @@
+
 import React, { useRef, useState, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Text, Float, ScrollControls, Scroll, useScroll, Line, PerspectiveCamera, Environment } from '@react-three/drei';
 import * as THREE from 'three';
-import { Settings, Shield, Trophy, Smartphone, RotateCw } from 'lucide-react';
+import { Settings, Shield, Trophy, Smartphone, RotateCw, X, Box, Hexagon, Circle, ArrowLeft } from 'lucide-react';
 import { Button } from '../components/UIComponents';
 
 interface GameMapScreenProps {
@@ -140,67 +141,97 @@ const CameraRig = () => {
 };
 
 export const GameMapScreen: React.FC<GameMapScreenProps> = ({ onOpenSettings, onBack }) => {
+  const [isOverlayDismissed, setIsOverlayDismissed] = useState(false);
+
   return (
-    <div className="w-full h-screen bg-gray-50 relative overflow-hidden">
+    <div className="w-full h-full bg-gray-50 relative overflow-hidden flex flex-col">
         
         {/* Landscape Enforcement Overlay */}
-        <div className="portrait-only absolute inset-0 z-[60] bg-brand-red flex flex-col items-center justify-center text-white p-8 text-center">
-            <RotateCw size={64} className="mb-6 animate-spin-slow" />
-            <h2 className="text-2xl font-bold mb-2">Please Rotate Your Device</h2>
-            <p className="text-white/80">The adventure map is best experienced in landscape mode.</p>
-        </div>
-
-        {/* UI Overlay (Visible in Landscape) */}
-        <div className="absolute top-0 left-0 right-0 p-4 z-50 flex justify-between items-start pointer-events-none">
-            {/* Stats */}
-            <div className="flex space-x-2 pointer-events-auto">
-                 <div className="bg-white/90 backdrop-blur-sm rounded-lg p-2 flex flex-col items-center shadow-sm border border-gray-200 min-w-[60px]">
-                    <span className="text-[10px] text-gray-500 font-bold uppercase">Badge</span>
-                    <span className="text-lg font-bold text-brand-red">0/10</span>
-                 </div>
-                 <div className="bg-white/90 backdrop-blur-sm rounded-lg p-2 flex flex-col items-center shadow-sm border border-gray-200 min-w-[60px]">
-                    <span className="text-[10px] text-gray-500 font-bold uppercase">Sponsor</span>
-                    <span className="text-lg font-bold text-blue-600">0/10</span>
-                 </div>
-                 <div className="bg-white/90 backdrop-blur-sm rounded-lg p-2 flex flex-col items-center shadow-sm border border-gray-200 min-w-[60px]">
-                    <span className="text-[10px] text-gray-500 font-bold uppercase">Phigital</span>
-                    <span className="text-lg font-bold text-green-600">0/10</span>
-                 </div>
-            </div>
-
-            {/* Controls */}
-            <div className="flex space-x-2 pointer-events-auto">
+        {!isOverlayDismissed && (
+            <div className="portrait-only absolute inset-0 z-[60] bg-brand-red flex flex-col items-center justify-center text-white p-8 text-center">
+                <RotateCw size={64} className="mb-6 animate-spin-slow" />
+                <h2 className="text-2xl font-bold mb-2">Please Rotate Your Device</h2>
+                <p className="text-white/80 mb-6">The adventure map is best experienced in landscape mode.</p>
                 <button 
-                    onClick={onOpenSettings}
-                    className="bg-white p-3 rounded-full shadow-md text-gray-700 hover:text-brand-red transition-colors"
+                    onClick={() => setIsOverlayDismissed(true)}
+                    className="mt-4 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-xs font-medium transition-colors"
                 >
-                    <Settings size={24} />
+                    Dismiss (Dev Mode)
                 </button>
             </div>
+        )}
+
+        {/* Header - Matching Settings Page Style */}
+        <div className="bg-white px-4 py-3 flex items-center shadow-sm z-50 shrink-0 justify-between">
+            <div className="flex items-center">
+                <button 
+                    onClick={onBack} 
+                    className="p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors mr-3"
+                >
+                    <ArrowLeft size={24} />
+                </button>
+                <h1 className="text-lg font-bold text-gray-900">Map</h1>
+            </div>
+            {/* Optional: Right side header elements if needed (e.g. simple logo) */}
+            <div className="text-xs font-bold text-brand-red tracking-widest uppercase">
+                COOP Adventure
+            </div>
         </div>
-        
+
         {/* 3D Canvas */}
-        <div className="w-full h-full landscape-only">
-             <Canvas shadows camera={{ position: [0, 5, 10], fov: 50 }}>
+        <div className="flex-1 w-full relative">
+             <Canvas shadows camera={{ position: [0, 5, 10], fov: 50 }} className="w-full h-full block">
                 <ScrollControls pages={4} damping={0.3}>
                     <GameScene />
                     <CameraRig />
                 </ScrollControls>
              </Canvas>
-             
-             {/* Bottom Overlay Instructions */}
-             <div className="absolute bottom-6 left-0 right-0 text-center pointer-events-none">
-                <div className="inline-block bg-black/50 text-white px-4 py-2 rounded-full backdrop-blur-sm text-sm">
-                    Scroll to explore the cities
-                </div>
-             </div>
-
-             {/* Back Button */}
-             <div className="absolute top-4 left-4 z-50 portrait:hidden">
-                 {/* Can add back functionality here if needed, keeping it clean for now */}
-             </div>
         </div>
 
+        {/* Footer Bar (HUD) - Replicating Mockup Style */}
+        <div className="bg-white border-t border-gray-200 px-6 py-2 flex justify-between items-center z-50 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+            
+            {/* Left: Settings */}
+            <button 
+                onClick={onOpenSettings}
+                className="flex flex-col items-center justify-center text-gray-400 hover:text-brand-red transition-colors group"
+            >
+                <div className="p-1 rounded-full group-hover:bg-red-50 transition-colors">
+                    <Settings size={24} />
+                </div>
+                <span className="text-[10px] font-bold uppercase mt-1">Settings</span>
+            </button>
+
+            {/* Right: Stats */}
+            <div className="flex space-x-6">
+                 {/* Badge */}
+                 <div className="flex flex-col items-center justify-center">
+                    <div className="flex items-center text-brand-red mb-1">
+                        <Trophy size={16} className="mr-1" />
+                        <span className="text-lg font-bold leading-none">0/10</span>
+                    </div>
+                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Badge</span>
+                 </div>
+
+                 {/* Sponsor */}
+                 <div className="flex flex-col items-center justify-center">
+                    <div className="flex items-center text-blue-600 mb-1">
+                        <Hexagon size={16} className="mr-1" />
+                        <span className="text-lg font-bold leading-none">0/10</span>
+                    </div>
+                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Sponsor</span>
+                 </div>
+
+                 {/* Phigital */}
+                 <div className="flex flex-col items-center justify-center">
+                    <div className="flex items-center text-green-600 mb-1">
+                        <Box size={16} className="mr-1" />
+                        <span className="text-lg font-bold leading-none">0/10</span>
+                    </div>
+                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Phigital</span>
+                 </div>
+            </div>
+        </div>
     </div>
   );
 };
