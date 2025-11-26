@@ -74,14 +74,12 @@ MirableCOOP is a mission-based adventure game where players:
    npm install
    ```
 
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-
-3. Run the development server:
+2. Run the development server:
    ```bash
    npm run dev
    ```
 
-4. Build for production:
+3. Build for production:
    ```bash
    npm build
    ```
