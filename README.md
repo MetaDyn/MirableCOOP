@@ -14,10 +14,13 @@ MirableCOOP is a mission-based adventure game where players:
 ## Key Features
 
 ### 🎮 Immersive 3D Experience
+- **Full-screen game map** that expands beyond mobile constraints for maximum immersion
 - Interactive 3D map powered by Three.js and React Three Fiber
-- Scroll-controlled camera navigation through city nodes
-- Smooth animations and visual effects
-- Landscape-optimized gameplay
+- Smooth scroll-controlled camera navigation with lerp interpolation
+- Enhanced lighting system with optimized ambient and directional lights
+- Spatial grid reference for better depth perception
+- Modern glassmorphic UI with backdrop blur effects
+- Landscape-optimized gameplay with elegant orientation prompts
 
 ### 🗺️ Mission-Based Gameplay
 - Progress through 10+ Italian cities
@@ -84,18 +87,29 @@ MirableCOOP is a mission-based adventure game where players:
    npm build
    ```
 
+## Recent Updates
+
+**Latest improvements include:**
+- ✨ Full-screen game map experience with dynamic layout switching
+- 🎨 Modern glassmorphic UI with backdrop blur effects
+- 📱 Improved responsive design with proper flex layout architecture
+- 🎥 Enhanced 3D camera system with smooth scroll-based movement
+- 💡 Optimized lighting and spatial reference grid for better visibility
+- 🎯 Refined stat counters with individual badge displays
+
 ## Development Status
 
 **Current Version:** 0.0.0 (MVP Development)
 
 This application is currently in active development with the following implementation status:
 - ✅ Core navigation and screen routing
-- ✅ 3D map visualization with city nodes
-- ✅ User onboarding flow
+- ✅ Full-screen 3D map visualization with enhanced UI
+- ✅ User onboarding flow with avatar selection
 - ✅ Basic game mechanics framework
+- ✅ Responsive layout system with mobile and full-screen modes
 - ⏳ Backend API integration (currently using mock data)
 - ⏳ Prize system implementation
-- ⏳ Complete mission mechanics
+- ⏳ Complete mission mechanics and level progression
 - ⏳ Testing and production optimization
 
 ## License
