@@ -1,7 +1,3 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
-
 # MirableCOOP - Interactive Adventure Game
 
 An immersive cooperative adventure game that takes players on a journey through Italian cities. Built with React, Three.js, and modern web technologies, this gamified mobile-first application combines 3D graphics with engaging gameplay mechanics.
@@ -103,10 +99,6 @@ This application is currently in active development with the following implement
 - ⏳ Prize system implementation
 - ⏳ Complete mission mechanics
 - ⏳ Testing and production optimization
-
-## View in AI Studio
-
-View your app in AI Studio: https://ai.studio/apps/drive/1ptX8NP9FbcHI3mk0-feGB13QAx2EWg-u
 
 ## License
 
