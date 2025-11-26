@@ -2,19 +2,112 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# MirableCOOP - Interactive Adventure Game
 
-This contains everything you need to run your app locally.
+An immersive cooperative adventure game that takes players on a journey through Italian cities. Built with React, Three.js, and modern web technologies, this gamified mobile-first application combines 3D graphics with engaging gameplay mechanics.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1ptX8NP9FbcHI3mk0-feGB13QAx2EWg-u
+## Overview
+
+MirableCOOP is a mission-based adventure game where players:
+- Travel through a beautifully rendered 3D map of Italian cities
+- Complete location-based challenges and missions
+- Earn tokens and unlock rewards through gameplay
+- Compete for badges, sponsor achievements, and phigital collectibles
+- Participate in instant-win prize opportunities
+
+## Key Features
+
+### 🎮 Immersive 3D Experience
+- Interactive 3D map powered by Three.js and React Three Fiber
+- Scroll-controlled camera navigation through city nodes
+- Smooth animations and visual effects
+- Landscape-optimized gameplay
+
+### 🗺️ Mission-Based Gameplay
+- Progress through 10+ Italian cities
+- Complete time-limited missions and challenges
+- Find hidden ingredients and unlock secret recipes
+- Track progress with multiple achievement categories
+
+### 🎁 Reward System
+- Token-based economy for in-game currency
+- Instant Win feature with prize wheel mechanics
+- Badge, Sponsor, and Phigital achievement tracking
+- Prize redemption system
+
+### 👤 User Experience
+- Smooth onboarding flow with terms acceptance
+- Avatar selection and customization
+- User profile management
+- Customizable game settings (music, sounds, vibration)
+
+## Technology Stack
+
+- **Frontend Framework:** React 18.2.0 with TypeScript
+- **3D Graphics:** Three.js 0.154.0 with @react-three/fiber and @react-three/drei
+- **Build Tool:** Vite 6.2.0
+- **UI Components:** Lucide React icons, Custom component library
+- **Styling:** Tailwind CSS (utility-first approach)
+
+## Project Structure
+
+```
+├── screens/           # Main application screens
+│   ├── WelcomeScreen.tsx
+│   ├── AvatarSelectionScreen.tsx
+│   ├── HomeScreen.tsx
+│   ├── GameMapScreen.tsx
+│   ├── GameLoadingScreen.tsx
+│   ├── ProfileScreen.tsx
+│   └── SettingsScreen.tsx
+├── components/        # Reusable UI components
+│   ├── Layout.tsx
+│   └── UIComponents.tsx
+├── services/          # API and data services
+│   └── api.ts
+├── types.ts          # TypeScript type definitions
+└── App.tsx           # Main application component
+```
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
-
+**Prerequisites:** Node.js (v16 or higher recommended)
 
 1. Install dependencies:
-   `npm install`
+   ```bash
+   npm install
+   ```
+
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Build for production:
+   ```bash
+   npm build
+   ```
+
+## Development Status
+
+**Current Version:** 0.0.0 (MVP Development)
+
+This application is currently in active development with the following implementation status:
+- ✅ Core navigation and screen routing
+- ✅ 3D map visualization with city nodes
+- ✅ User onboarding flow
+- ✅ Basic game mechanics framework
+- ⏳ Backend API integration (currently using mock data)
+- ⏳ Prize system implementation
+- ⏳ Complete mission mechanics
+- ⏳ Testing and production optimization
+
+## View in AI Studio
+
+View your app in AI Studio: https://ai.studio/apps/drive/1ptX8NP9FbcHI3mk0-feGB13QAx2EWg-u
+
+## License
+
+Private - All rights reserved
